@@ -1,0 +1,28 @@
+public class DRoot {
+  	public static int digital_root(int n) {
+		int result = calculate(intToIntArray(n));
+		if(result > 9) {
+			return calculate(intToIntArray(result));
+		} else {
+			return result;
+		}
+	}
+
+	public static int calculate(int[] numbers) {
+		int result = 0;
+		for (int n : numbers) {
+			result += n;
+		}
+		return result;
+	}
+
+	public static int[] intToIntArray(int n) {
+		String numbers = String.valueOf(n);
+		char[] cArray =  numbers.toCharArray();
+		int[] result = new int[cArray.length];
+		for(int i = 0; i< cArray.length; i++) {
+			result[i] = Character.getNumericValue(cArray[i]);
+		}
+		return result;
+	}
+}
