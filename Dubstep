@@ -1,0 +1,14 @@
+import java.util.Arrays;
+
+public class Dubstep {
+	public static String SongDecoder(String song) {
+		String[] noWubs = song.split("WUB");
+		StringBuilder sb = new StringBuilder();
+		for (String word : noWubs) {
+			if (word.length() > 0) {
+				sb.append(word + " ");
+			}
+		}
+		return sb.toString().trim();
+	}
+}
