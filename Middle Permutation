@@ -19,8 +19,7 @@ class MiddlePermutation {
 	private static String sortString(String strng) {
 		char[] ar = strng.toCharArray();
 		Arrays.sort(ar);
-		String sorted = String.valueOf(ar);
-		return sorted;
+		return String.valueOf(ar);
 	}
 
 	public static List<Integer> createNum(String strng) {
