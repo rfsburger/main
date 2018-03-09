@@ -1,0 +1,19 @@
+public class FindOutlier{
+  static int find(int[] integers) {
+		int even = 0;
+		int odd = 0;
+		int rEven = 0;
+		int rOdd = 0;
+
+		for (int n : integers) {
+			if (n % 2 == 0) {
+				even++;
+				rEven = n;
+			} else {
+				odd++;
+				rOdd = n;
+			}
+		}
+		return (even > odd) ? rOdd : rEven;
+	}
+}
