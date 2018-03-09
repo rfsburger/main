@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class SqInRect {
+	
+	public static List<Integer> sqInRect(int lng, int wdth) {
+		List<Integer> result = new ArrayList<>();
+
+		if (lng == wdth) {
+			return null;
+		} else {
+			int small = (lng > wdth) ? wdth : lng;
+			int smallSq = small * small;
+			int longest = (lng > wdth) ? lng : wdth;
+			int remaining = small * longest;
+
+			while (remaining > 0) {
+				if (longest < small) {
+					int temp;
+					temp = longest;
+					longest = small;
+					small = temp;
+				}
+        int amount = longest / small;
+				for (int i = amount; i > 0; i--) {
+					result.add(small);
+				}
+				remaining -= (small * small * amount);
+				longest -= (small*amount);
+			}
+
+		}
+		return result;
+	}
+}
