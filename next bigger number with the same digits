@@ -1,0 +1,63 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Kata
+{
+	public static long nextBiggerNumber(long n) {
+
+		List<Integer> startNumber = stringToList(longToString(n));
+		long resultLong = n + 1;
+		boolean succes = false;
+
+		if (checkIfPossible(longToString(n))) {
+			while (!succes) {
+				List<Integer> newNumber = stringToList(longToString(resultLong));
+				startNumber.forEach((o) -> {
+					if (newNumber.contains(o)) {
+						newNumber.remove(o);
+					}
+				});
+				if (newNumber.isEmpty()) {
+					succes = true;
+				} else {
+					resultLong++;
+				}
+			}
+			return resultLong;
+		} else {
+			return -1;
+		}
+	}
+
+	public static String longToString(long l) {
+		StringBuilder sb = new StringBuilder();
+		while (l > 0) {
+			sb.append(l % 10);
+			l = l / 10;
+		}
+		return sb.reverse().toString();
+	}
+
+	public static List<Integer> stringToList(String s) {
+		List<Integer> out = new ArrayList<>();
+		for (int i = 0; i < s.length(); i++) {
+			out.add(Character.getNumericValue(s.charAt(i)));
+		}
+		return out;
+	}
+
+	public static boolean checkIfPossible(String s) {
+		boolean isPossible = false;
+		if (s.length() > 1) {
+			for (int i = 1; i < s.length(); i++) {
+				if (Character.getNumericValue(s.charAt(i)) <= Character.getNumericValue(s.charAt(i - 1))) {
+					isPossible = false;
+				} else {
+					isPossible = true;
+					break;
+				}
+			}
+		}
+		return isPossible;
+	}
+}

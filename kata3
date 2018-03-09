@@ -1,0 +1,46 @@
+
+rt java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class MiddlePermutation {
+    
+	public static String findMidPerm(String strng) {
+		strng = sortString(strng);
+		StringBuilder sb = new StringBuilder();
+		List<Integer> s = createNum(strng);
+		for(int i =0; i <s.size(); i++) {
+			int b = s.get(i);
+			sb.append(strng.charAt(b-1));
+		}
+		return sb.toString();
+	}
+
+	private static String sortString(String strng) {
+		char[] ar = strng.toCharArray();
+		Arrays.sort(ar);
+		String sorted = String.valueOf(ar);
+		return sorted;
+	}
+
+	public static List<Integer> createNum(String strng) {
+		List<Integer> list = new ArrayList<>();
+		int s = strng.length() / 2;
+		int s2 = (strng.length() / 2) + 1;
+		if (strng.length() % 2 == 0) {
+			list.add(s);
+			for (int i = strng.length(); i > 0; i--)
+				if (i != s) {
+					list.add(i);
+				}
+		} else {
+			list.add(s2);
+			list.add(s);
+			for (int i = strng.length(); i > 0; i--)
+				if (i != s && i != s2) {
+					list.add(i);
+				}
+		}
+		return list;
+	}
+}
