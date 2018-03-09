@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class SmileFaces {
+  
+  public static int countSmileys(List<String> arr) {
+   	int counter = 0;
+
+		for (String item : arr) {
+			if(item.charAt(0) == ':' ||  item.charAt(0) == ';') {
+				if(item.charAt(1) == '-' || item.charAt(1) == '~') {
+					if(item.length() ==3 && (item.charAt(2) == ')' || item.charAt(2) == 'D')) {
+						counter++;
+					}
+				} else if((item.length() == 2) && (item.charAt(1) == ')' || item.charAt(1) == 'D')) {
+					counter++;
+				}
+			}
+		}
+
+		return counter;
+	}
+}
